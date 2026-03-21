@@ -405,7 +405,7 @@ p {
 .site-footer {
   margin-top: auto;
   border-top: 1px solid #d6c3a8;
-  background: #ecdfcd;
+  background: var(--heading-bark);
 }
 
 .site-footer-inner {
@@ -414,7 +414,7 @@ p {
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1.3rem 0;
-  color: #5e473a;
+  color: var(--background-cream);
   font-size: 0.93rem;
 }
 

@@ -5,7 +5,7 @@ export type Seller = {
   specialty: string;
   bio: string;
   story: string;
-  avatarEmoji: string;
+  avatarUrl: string;
 };
 
 export type Product = {
@@ -15,7 +15,7 @@ export type Product = {
   category: "Decor" | "Accessories" | "Ceramics" | "Textile" | "Stationery";
   description: string;
   price: number;
-  imageEmoji: string;
+  imageUrl: string;
   featured?: boolean;
 };
 
@@ -34,9 +34,8 @@ export const sellers: Seller[] = [
     location: "Belo Horizonte, MG",
     specialty: "Artistic ceramics",
     bio: "Functional and decorative pieces shaped and fired in small batches.",
-    story:
-      "Lia turns local clay into collections inspired by organic forms. Every piece goes through hand shaping and glazes developed in her own studio.",
-    avatarEmoji: "🏺",
+    story: "Lia turns local clay into collections inspired by organic forms. Every piece goes through hand shaping and glazes developed in her own studio.",
+    avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
   },
   {
     id: "s2",
@@ -44,9 +43,8 @@ export const sellers: Seller[] = [
     location: "Florianopolis, SC",
     specialty: "Weaving and macrame",
     bio: "Natural home textures made with responsibly sourced fibers.",
-    story:
-      "At Trama Viva, Ana and Joana create textile pieces with recycled cotton and plant fibers. Their focus is to combine visual comfort with conscious production.",
-    avatarEmoji: "🧶",
+    story: "At Trama Viva, Ana and Joana create textile pieces with recycled cotton and plant fibers. Their focus is to combine visual comfort with conscious production.",
+    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
   },
   {
     id: "s3",
@@ -54,9 +52,8 @@ export const sellers: Seller[] = [
     location: "Salvador, BA",
     specialty: "Metal and leather accessories",
     bio: "Durable accessories with hand-finished details and original design.",
-    story:
-      "Dourado Workshop was born from the desire to craft everyday accessories with long-lasting materials and Brazilian identity.",
-    avatarEmoji: "👜",
+    story: "Dourado Workshop was born from the desire to craft everyday accessories with long-lasting materials and Brazilian identity.",
+    avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
   },
   {
     id: "s4",
@@ -64,9 +61,8 @@ export const sellers: Seller[] = [
     location: "Curitiba, PR",
     specialty: "Handmade stationery",
     bio: "Notebooks, cards, and gifts made with hand-binding techniques.",
-    story:
-      "Using classic binding techniques, Paper and Bloom creates small collections for gifting and daily use, always with certified paper.",
-    avatarEmoji: "📒",
+    story: "Using classic binding techniques, Paper and Bloom creates small collections for gifting and daily use, always with certified paper.",
+    avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
   },
 ];
 
@@ -78,7 +74,7 @@ export const products: Product[] = [
     category: "Ceramics",
     description: "Ceramic vase with matte glaze in earthy tones.",
     price: 189,
-    imageEmoji: "🏺",
+    imageUrl: "https://images.unsplash.com/photo-1725169412537-acd1cd15e10f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2VyYW1pYyUyMHZhc2UlMjBtaW5pbWFsfGVufDB8fDB8fHww",
     featured: true,
   },
   {
@@ -88,7 +84,7 @@ export const products: Product[] = [
     category: "Textile",
     description: "Wall macrame panel made with natural fibers.",
     price: 229,
-    imageEmoji: "🧵",
+    imageUrl: "https://images.unsplash.com/photo-1634120830231-4d9dabb67e2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjcmFtZSUyMHdhbGwlMjBoYW5naW5nfGVufDB8fDB8fHww",
     featured: true,
   },
   {
@@ -98,7 +94,7 @@ export const products: Product[] = [
     category: "Accessories",
     description: "Plant-based leather bag with gold-tone hardware.",
     price: 319,
-    imageEmoji: "👜",
+    imageUrl: "https://images.unsplash.com/photo-1525708570275-58d59ffe4a93?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBhdGh3YXklMjBiYWclMjBoYW5kbWFkZXxlbnwwfHwwfHx8MA%3D%3D",
     featured: true,
   },
   {
@@ -108,7 +104,7 @@ export const products: Product[] = [
     category: "Stationery",
     description: "Hand-stitched notebook with textured paper cover.",
     price: 89,
-    imageEmoji: "📔",
+    imageUrl: "https://plus.unsplash.com/premium_photo-1726729358231-aab9a3adf644?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym90YW5pY2FsJTIwam91cm5hbCUyMG5vdGVib29rfGVufDB8fDB8fHww",
   },
   {
     id: "p5",
@@ -117,7 +113,7 @@ export const products: Product[] = [
     category: "Ceramics",
     description: "Hand-painted decorative plate, ideal for table centerpieces.",
     price: 142,
-    imageEmoji: "🍽️",
+    imageUrl: "https://images.unsplash.com/photo-1678791673777-57274271e434?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFuZG1hZGUlMjBwb3R0ZXJ5JTIwcGxhdGV8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: "p6",
@@ -126,7 +122,7 @@ export const products: Product[] = [
     category: "Textile",
     description: "Light throw made of recycled cotton for sofa or bed.",
     price: 259,
-    imageEmoji: "🧣",
+    imageUrl: "https://plus.unsplash.com/premium_photo-1661636379888-039405d79a7b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y290dG9uJTIwdGhyb3clMjBibGFua2V0fGVufDB8fDB8fHww",
   },
   {
     id: "p7",
@@ -135,7 +131,7 @@ export const products: Product[] = [
     category: "Accessories",
     description: "Handcrafted bracelet with leather and brushed metal clasp.",
     price: 74,
-    imageEmoji: "📿",
+    imageUrl: "https://media.istockphoto.com/id/1372791101/es/foto/pulsera-de-cuero-negro-en-una-mano-masculina.webp?a=1&b=1&s=612x612&w=0&k=20&c=xIdCFGhoHONES7LEM241VJ9ituyYEkbkAWmfA00iuNk=",
   },
   {
     id: "p8",
@@ -144,7 +140,7 @@ export const products: Product[] = [
     category: "Stationery",
     description: "Set of handmade cards for thoughtful messages.",
     price: 52,
-    imageEmoji: "💌",
+    imageUrl: "https://images.unsplash.com/photo-1650472738255-b48e9e59e05a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhhbmRtYWRlJTIwc3RhdGlvbmVyeSUyMGNhcmRzfGVufDB8fDB8fHww",
   },
   {
     id: "p9",
@@ -153,7 +149,7 @@ export const products: Product[] = [
     category: "Decor",
     description: "Embroidered cushion with hypoallergenic filling.",
     price: 136,
-    imageEmoji: "🛋️",
+    imageUrl: "https://plus.unsplash.com/premium_photo-1666211976026-e2635ba30a48?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9obyUyMG11c3RhcmQlMjBjdXNoaW9ufGVufDB8fDB8fHww",
   },
 ];
 
@@ -215,11 +211,7 @@ export function getReviewsByProductId(productId: string) {
 
 export function getAverageRating(productId: string) {
   const selectedReviews = getReviewsByProductId(productId);
-
-  if (selectedReviews.length === 0) {
-    return 0;
-  }
-
+  if (selectedReviews.length === 0) return 0;
   const total = selectedReviews.reduce((sum, review) => sum + review.rating, 0);
   return Number((total / selectedReviews.length).toFixed(1));
 }
