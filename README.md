@@ -79,6 +79,10 @@ Current integration files:
 
 ### Starter SQL (Supabase SQL Editor)
 
+Use the canonical schema in [supabase/schema.sql](supabase/schema.sql).
+
+Quick copy/paste (same as the file):
+
 ```sql
 create table if not exists sellers (
 	id text primary key,
@@ -98,7 +102,7 @@ create table if not exists products (
 	description text not null,
 	price numeric not null,
 	"imageEmoji" text not null,
-	featured boolean default false
+	featured boolean not null default false
 );
 
 create table if not exists reviews (
