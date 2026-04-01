@@ -6,6 +6,8 @@
 
 **Handcrafted Haven — Group 6 Project for WDD 430**
 
+Deployment link : https://handcrafted-haven-red.vercel.app/
+
 Team Members:
 
 - Nyantakyi Francis
