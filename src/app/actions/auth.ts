@@ -9,6 +9,7 @@ export type AuthFormState =
         name?: string[];
         email?: string[];
         password?: string[];
+        role?: string[]; 
       };
       message?: string;
     }
@@ -16,13 +17,14 @@ export type AuthFormState =
 
 async function upsertClientProfile(
   supabase: Awaited<ReturnType<typeof getSupabaseServerClient>>,
-  profile: { id: string; name: string; email: string }
+  profile: { id: string; name: string; email: string; role: string } 
 ) {
   await supabase.from("clients").upsert(
     {
       id: profile.id,
       name: profile.name,
       email: profile.email,
+      role: profile.role, 
     },
     { onConflict: "id" }
   );
@@ -48,6 +50,7 @@ export async function signup(
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
+  const role = String(formData.get("role") ?? "").trim(); 
 
   const errors: NonNullable<AuthFormState>["errors"] = {};
 
@@ -64,6 +67,9 @@ export async function signup(
   } else if (!/[0-9]/.test(password)) {
     errors.password = ["Password must include at least one number."];
   }
+  if (!["buyer", "seller"].includes(role)) { 
+    errors.role = ["Please select a valid role."];
+  }
 
   if (Object.keys(errors).length > 0) {
     return { errors };
@@ -73,7 +79,7 @@ export async function signup(
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { full_name: name } },
+    options: { data: { full_name: name, role } }, 
   });
 
   if (error) {
@@ -88,6 +94,7 @@ export async function signup(
       id: data.user.id,
       name,
       email,
+      role, 
     });
 
     redirect(nextTarget);
@@ -140,6 +147,7 @@ export async function login(
         data.user.email?.split("@")[0] ??
         "User",
       email: data.user.email ?? email,
+      role: data.user.user_metadata?.role ?? "buyer", 
     });
   }
 

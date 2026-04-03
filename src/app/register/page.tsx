@@ -71,7 +71,18 @@ export default function RegisterPage() {
             {state?.errors?.password && (
               <span className="field-error">{state.errors.password[0]}</span>
             )}
-          </div>
+          </div> <div className="field">
+            <label htmlFor="role">I am a:</label>
+            <select id="role" name="role" required>
+              <option value="">Select an option</option>
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+              </select>
+              {state?.errors?.role && (
+                <span className="field-error">{state.errors.role[0]}</span>
+                )}
+                </div>
+          
 
           <button
             type="submit"
