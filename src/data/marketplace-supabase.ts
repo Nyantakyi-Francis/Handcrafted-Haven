@@ -59,27 +59,43 @@ function normalizeReview(review: ProductReview & { rating: number | string }): P
   };
 }
 
+function mergeById<T extends { id: string }>(remote: T[], fallback: T[]) {
+  const merged = new Map(fallback.map((item) => [item.id, item]));
+
+  for (const item of remote) {
+    merged.set(item.id, item);
+  }
+
+  return Array.from(merged.values());
+}
+
 export const getMarketplaceData = cache(async (): Promise<MarketplaceData> => {
   if (!hasSupabasePublicEnv()) {
     return localData;
   }
 
-  try {
-    const [remoteSellers, remoteProducts, remoteReviews] = await Promise.all([
-      fetchTable<Seller>("sellers"),
-      fetchTable<Product & { price: number | string }>("products"),
-      fetchTable<ProductReview & { rating: number | string }>("reviews"),
-    ]);
+  const [sellersResult, productsResult, reviewsResult] = await Promise.allSettled([
+    fetchTable<Seller>("sellers"),
+    fetchTable<Product & { price: number | string }>("products"),
+    fetchTable<ProductReview & { rating: number | string }>("reviews"),
+  ]);
 
-    return {
-      sellers: remoteSellers,
-      products: remoteProducts.map(normalizeProduct),
-      reviews: remoteReviews.map(normalizeReview),
-    };
-  } catch {
-    // Keep the app functional while Supabase schema/keys are still being configured.
-    return localData;
-  }
+  const remoteSellers = sellersResult.status === "fulfilled" ? sellersResult.value : [];
+  const remoteProducts = productsResult.status === "fulfilled" ? productsResult.value : [];
+  const remoteReviews = reviewsResult.status === "fulfilled" ? reviewsResult.value : [];
+
+  return {
+    sellers:
+      remoteSellers.length > 0 ? mergeById(remoteSellers, localData.sellers) : localData.sellers,
+    products:
+      remoteProducts.length > 0
+        ? mergeById(remoteProducts.map(normalizeProduct), localData.products)
+        : localData.products,
+    reviews:
+      remoteReviews.length > 0
+        ? mergeById(remoteReviews.map(normalizeReview), localData.reviews)
+        : localData.reviews,
+  };
 });
 
 export async function getSellerByIdFromDb(id: string) {
