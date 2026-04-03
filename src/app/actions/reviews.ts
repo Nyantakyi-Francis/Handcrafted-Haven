@@ -99,9 +99,13 @@ export async function submitReview(
     const admin = getSupabaseAdminClient();
     const { error } = await admin.from("reviews").insert(newReview);
     insertError = error;
-  } catch {
-    const { error } = await supabase.from("reviews").insert(newReview);
-    insertError = error;
+  } catch (error) {
+    console.error("Failed to insert review with Supabase admin client; falling back to server client.", {
+      productId: values.productId,
+      error,
+    });
+    const { error: fallbackError } = await supabase.from("reviews").insert(newReview);
+    insertError = fallbackError;
   }
 
   if (insertError) {

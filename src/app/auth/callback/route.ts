@@ -5,11 +5,17 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 function getSafeNext(requestUrl: URL) {
   const next = requestUrl.searchParams.get("next")?.trim() ?? "/profile";
 
-  if (!next.startsWith("/") || next.startsWith("//")) {
+  try {
+    const parsedNext = new URL(next, requestUrl.origin);
+
+    if (parsedNext.origin !== requestUrl.origin) {
+      return "/profile";
+    }
+
+    return `${parsedNext.pathname}${parsedNext.search}${parsedNext.hash}`;
+  } catch {
     return "/profile";
   }
-
-  return next;
 }
 
 function buildRedirectUrl(
